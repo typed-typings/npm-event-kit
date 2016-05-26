@@ -1,9 +1,10 @@
-import Emitter = require('./emitter');
-import Disposable = require('./disposable');
-import CompositeDisposable = require('./composite-disposable');
+import EmitterS = require('./emitter');
+import DisposableS = require('./disposable');
+import CompositeDisposableS = require('./composite-disposable');
 
-export = {
-  Emitter,
-  Disposable,
-  CompositeDisposable
+declare namespace EventKit {
+  export class Emitter extends EmitterS {}
+  export class Disposable extends DisposableS {}
+  export class CompositeDisposable extends CompositeDisposableS {}
 }
+export = EventKit;
