@@ -1,18 +1,33 @@
-import EmitterS = require('./emitter');
-import DisposableS = require('./disposable');
-import CompositeDisposableS = require('./composite-disposable');
-
-
 declare namespace EventKit {
-  export class Emitter extends EmitterS { }
-  export class Disposable extends DisposableS { }
-  export class CompositeDisposable extends CompositeDisposableS { }
-  export interface EventCallback {
+  class Emitter {
+    clear(): void;
+    dispose(): void;
+    on(eventName: string, handler: (value: any) => void): Disposable;
+    preempt(eventName: string, handler: (value: any) => void): Disposable;
+    emit(eventName: string, value: any): void;
+  }
+
+  class Disposable {
+    static isDisposable(object: Object): boolean;
+    constructor(disposalAction: Function);
+    dispose(): void;
+  }
+
+  class CompositeDisposable {
+    constructor(...disposables: { dispose: () => any }[]);
+    dispose(): void;
+    add(...disposables: { dispose: () => any }[]): void;
+    remove(disposable: { dispose: () => any }): void;
+    clear(): void;
+  }
+
+  interface EventCallback {
     (event: any): void;
   }
 
-  export interface EventHandler {
-    (callback: () => void): DisposableS;
+  interface EventHandler {
+    (callback: () => void): Disposable;
   }
 }
+
 export = EventKit;
