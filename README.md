@@ -1,5 +1,7 @@
 # Typed Event Kit  [![Build Status](https://travis-ci.org/typed-typings/npm-event-kit.svg?branch=master)](https://travis-ci.org/typed-typings/npm-event-kit)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/types/npm-event-kit.svg)](https://greenkeeper.io/)
+
 
 The type definition for [`event-kit`](https://github.com/atom/event-kit.git)
 
